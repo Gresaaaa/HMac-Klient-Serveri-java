@@ -57,7 +57,8 @@ Projekti përdor biblioteka për hashing dhe HMAC, kryesisht nga Java Cryptograp
     - Marrja e mesazheve.
     - Rezultati i verifikimit të HMAC.
 - Kjo ndihmon në auditim dhe debug të sistemit.
-
+- Versionet më të vjetra të log-ut ruhen automatikisht në skedarë backup, si p.sh. `log.txt.1`. Skedarët e tillë mund të fshihen nëse nuk janë të nevojshëm më.
+- Ruajtja e log-ut ndihmon në monitorimin e sigurisë dhe funksionimit të saktë të komunikimit midis klientit dhe serverit.
 ---
 
 ## Si të Ekzekutoni Projektin
