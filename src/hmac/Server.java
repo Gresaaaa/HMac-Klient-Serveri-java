@@ -3,11 +3,12 @@ package hmac;
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.logging.Logger;
 
 public class Server {
-
+    private static Logger logger = LoggerUtil.getLogger();
     public static void main(String[] args) {
-        int port = 1234;
+        int port = 1235;
 
         try (ServerSocket serverSocket = new ServerSocket(port)) {
             System.out.println("Serveri u startua dhe po pret mesazhe në portin " + port + "...");

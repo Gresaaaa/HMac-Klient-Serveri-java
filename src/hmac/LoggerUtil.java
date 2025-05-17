@@ -1,20 +1,23 @@
 package hmac;
 
-import java.io.FileWriter;
 import java.io.IOException;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import java.util.logging.*;
 
 public class LoggerUtil {
-    private static final String LOG_FILE = "log.txt";
+    private static Logger logger = Logger.getLogger("HMACLogger");
 
-    public static void log(String message) {
-        try (FileWriter fw = new FileWriter(LOG_FILE, true)) {
-            String timestamp = LocalDateTime.now()
-                    .format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
-            fw.write(timestamp + " - " + message + System.lineSeparator());
+    static {
+        try {
+            FileHandler fh = new FileHandler("log.txt", true);
+            fh.setFormatter(new SimpleFormatter());
+            logger.addHandler(fh);
+            logger.setUseParentHandlers(false);
         } catch (IOException e) {
-            System.err.println("Error writing to log file: " + e.getMessage());
+            e.printStackTrace();
         }
+    }
+
+    public static Logger getLogger() {
+        return logger;
     }
 }

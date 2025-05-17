@@ -5,12 +5,15 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.Scanner;
+import java.util.logging.Logger;
 
 public class Klient {
 
+    private static Logger logger = LoggerUtil.getLogger();
+
     public static void main(String[] args) {
         String host = "localhost";
-        int port = 1234;
+        int port = 1235;
 
         try (Socket socket = new Socket(host, port);
              PrintWriter output = new PrintWriter(socket.getOutputStream(), true);
@@ -23,14 +26,11 @@ public class Klient {
             String hmac = HMACUtil.generateHMAC(message);
             String toSend = message + "||" + hmac;
 
-            System.out.println("Dërgohet mesazhi me HMAC: " + toSend);
-
-
-            LoggerUtil.log("Sent message with HMAC: " + toSend);
-
+            logger.info("Dërgohet mesazhi me HMAC: " + toSend);
             output.println(toSend);
 
             String response = input.readLine();
+            logger.info("Përgjigja nga serveri: " + response);
             System.out.println("Përgjigja nga serveri: " + response);
 
         } catch (Exception e) {

@@ -1,0 +1,5 @@
+2025-05-17 14:16:16 - Sent message with HMAC: gresa||38OEpvUrRiyOKnTylC4Y+TkrNXUs8ez6yyQG0GDDuGw=
+2025-05-17 14:16:16 - Received message: gresa
+2025-05-17 14:16:16 - Received HMAC: 38OEpvUrRiyOKnTylC4Y+TkrNXUs8ez6yyQG0GDDuGw=
+2025-05-17 14:16:16 - HMAC verified successfully for message: gresa
+May 17, 2025 2:22:00 PM hmac.Server main
