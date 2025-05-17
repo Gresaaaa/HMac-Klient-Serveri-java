@@ -61,11 +61,32 @@ Projekti përdor biblioteka për hashing dhe HMAC, kryesisht nga Java Cryptograp
 - Ruajtja e log-ut ndihmon në monitorimin e sigurisë dhe funksionimit të saktë të komunikimit midis klientit dhe serverit.
 ---
 
-## Si të Ekzekutoni Projektin
+## Si të Ekzekutoni
 
-1. **Klononi repository-n:**
-   ```bash
-   git clone https://github.com/Gresaaa/HMac-Klient-Serveri-java.git
-   cd HMac-Klient-Serveri-java
-   
+1.Klononi repository-n:
+
+git clone https://github.com/Gresaaa/HMac-Klient-Serveri-java.git
+cd HMac-Klient-Serveri-java
+
+2️.Ndërtoni projektin me Maven:
+
+mvn clean install
+
+3️.Startoni Serverin:
+
+java -cp target/HMac-Klient-Serveri-java-1.0-SNAPSHOT.jar hmac.Server
+
+4️.Startoni Klientin:
+
+java -cp target/HMac-Klient-Serveri-java-1.0-SNAPSHOT.jar hmac.Klient
+
+##Siguria
+
+Integriteti i Mesazhit: Mesazhi dhe HMAC dërgohen së bashku te serveri. Serveri verifikon nëse HMAC përputhet me mesazhin e dërguar duke përdorur të njëjtin çelës sekret dhe algoritëm SHA-256.
+
+Autenticiteti: Vetëm klientët që kanë çelësin sekret të saktë mund të gjenerojnë një HMAC valid, gjë që garanton se mesazhi vjen nga një burim i besuar.
+
+Validimi i Formatit: Serveri kontrollon që mesazhi i pranuar ka formatin e saktë: message||hmac||timestamp. Nëse formati është i gabuar, serveri refuzon mesazhin.
+
+Logim i Sigurt: Të gjitha mesazhet dhe verifikimet regjistrohen në log, duke lejuar auditim dhe gjurmim të ngjarjeve të dyshimta.
 
