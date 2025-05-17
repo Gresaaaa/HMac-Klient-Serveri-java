@@ -17,7 +17,7 @@ public class Serveri {
                 BufferedReader input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
                 PrintWriter output = new PrintWriter(socket.getOutputStream(), true);
 
-                String received = input.readLine();
+                String received = input.readLine(); // prit mesazhin me format: message||hmac
                 if (received == null) continue;
 
                 String[] parts = received.split("\\|\\|");
@@ -33,11 +33,16 @@ public class Serveri {
                 System.out.println("Mesazhi pranuar: " + message);
                 System.out.println("HMAC i marrë: " + receivedHmac);
 
+                LoggerUtil.log("Received message: " + message);
+                LoggerUtil.log("Received HMAC: " + receivedHmac);
+
                 if (HMACUtil.verifyHMAC(message, receivedHmac)) {
-                    System.out.println("HMAC u verifikua me sukses!");
+                    LoggerUtil.log("HMAC verified successfully for message: " + message);
+                    System.out.println("Mesazhi i verifikuar me sukses.");
                     output.println("Valid HMAC: Mesazhi i verifikuar me sukses");
                 } else {
-                    System.out.println("HMAC nuk përputhet!");
+                    LoggerUtil.log("HMAC verification failed for message: " + message);
+                    System.out.println("Verifikimi i HMAC dështoi.");
                     output.println("Invalid HMAC: Mesazhi është manipuluar");
                 }
 
