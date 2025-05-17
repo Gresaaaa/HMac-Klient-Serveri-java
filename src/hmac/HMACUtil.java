@@ -20,5 +20,10 @@ public class HMACUtil {
             throw new RuntimeException("Error generating HMAC", e);
         }
     }
-
+    public static boolean verifyHMAC(String message, String receivedHmac) {
+        String calculatedHmac = generateHMAC(message);
+        return calculatedHmac.equals(receivedHmac);
+    }
 }
+
+
