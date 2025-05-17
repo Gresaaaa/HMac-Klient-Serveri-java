@@ -35,3 +35,36 @@ Projekti përdor biblioteka për hashing dhe HMAC, kryesisht nga Java Cryptograp
 - Mesazhi dhe HMAC dërgohen si string të ndarë me një karakter të caktuar (p.sh. `||`).
 - Serveri përgjigjet me mesazh sukses/fail sipas rezultatit të verifikimit.
 - Protokolli përfshin menaxhim bazik të gabimeve dhe mundësi për ritransmetim në rast deshtimi (mund të zgjerohet).
+
+
+### User Interface
+
+- Implementohen ndërfaqe konsolle (console UI) për klientin dhe serverin.
+- Përdoruesi udhëzohet qartë gjatë dërgimit dhe marrjes së mesazheve.
+- Mesazhet e statusit (p.sh. "Mesazhi u dërgua me sukses", "HMAC validuar") shfaqen në mënyrë të thjeshtë për përdoruesin.
+
+### Security Practices
+
+- Çelësi sekret trajtohet me kujdes dhe nuk ekspozohet jashtë aplikacionit.
+- Përdoren teknika për parandalimin e sulmeve të njohura si timing attacks në verifikimin e HMAC.
+- Përmirësime të mundshme për sigurinë mund të përfshijnë encryption të kanaleve të komunikimit (jo implementuar në këtë version bazë).
+
+### Logging
+
+- Që të dyja, klienti dhe serveri, ruajnë log-et në file (p.sh. `log.txt`).
+- Regjistrohen veprime kryesore si:
+    - Dërgimi i mesazheve me HMAC.
+    - Marrja e mesazheve.
+    - Rezultati i verifikimit të HMAC.
+- Kjo ndihmon në auditim dhe debug të sistemit.
+
+---
+
+## Si të Ekzekutoni Projektin
+
+1. **Klononi repository-n:**
+   ```bash
+   git clone https://github.com/Gresaaa/HMac-Klient-Serveri-java.git
+   cd HMac-Klient-Serveri-java
+   
+
