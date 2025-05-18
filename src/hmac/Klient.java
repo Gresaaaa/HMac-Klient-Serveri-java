@@ -28,7 +28,7 @@ public class Klient {
 
 
             if (message.isEmpty()) {
-                System.out.println("❌ Mesazhi nuk mund të jetë bosh!");
+                System.out.println(" Mesazhi nuk mund të jetë bosh!");
                 return;
             }
 
@@ -37,22 +37,22 @@ public class Klient {
             String toSend = message + "||" + hmac;
 
 
-            logger.info("📤 Dërgohet mesazhi me HMAC: " + toSend);
+            logger.info(" Dërgohet mesazhi me HMAC: " + toSend);
             output.println(toSend);
 
 
             String response = input.readLine();
             if (response != null) {
-                logger.info("📥 Përgjigja nga serveri: " + response);
+                logger.info(" Përgjigja nga serveri: " + response);
                 System.out.println("Përgjigja nga serveri: " + response);
             } else {
-                logger.warning("⚠️ Serveri nuk ktheu asnjë përgjigje.");
-                System.out.println("⚠️ Serveri nuk u përgjigj. Provo përsëri më vonë.");
+                logger.warning(" Serveri nuk ktheu asnjë përgjigje.");
+                System.out.println(" Serveri nuk u përgjigj. Provo përsëri më vonë.");
             }
 
         } catch (Exception e) {
-            logger.severe("❌ Gabim gjatë komunikimit me serverin: " + e.getMessage());
-            System.out.println("❌ Gabim gjatë komunikimit me serverin. Provo përsëri më vonë.");
+            logger.severe(" Gabim gjatë komunikimit me serverin: " + e.getMessage());
+            System.out.println(" Gabim gjatë komunikimit me serverin. Provo përsëri më vonë.");
         }
     }
 }
